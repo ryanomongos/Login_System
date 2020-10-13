@@ -1,0 +1,26 @@
+body{
+    background-color: #7F4587;
+    padding-top: 10%;
+    
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    width: 18em;
+    background-color: #E5B3EC;
+}
+
+button{
+    padding: 0.3rem 1rem;
+    border-radius: 2em;
+    border:1px solid #E5B3EC;
+    text-transform: uppercase;
+    background-color: #BD9DCA;
+}
+
+button:hover{
+    background-color: #89639A;
+}
