@@ -15,7 +15,7 @@
                         <h5>Event Name</h5>
                         <input type="text" name="eventname" required><br />
                         <h5>Event Image</h5>
-                        <input type="button" name="event_image" placeholder="Choose image" required><br /><br />
+                        <input type="button" name="event_image" value="Choose image" required><br /><br />
                         <button name="submit">Submit</button><br /><br />
                     </form>
                 </div>

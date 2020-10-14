@@ -27,8 +27,9 @@
 
                     $result = $conn->query("SELECT * FROM users_detail WHERE username = '$username' AND password = '$passwordd'");
                     if($row = $result->fetch_assoc()){
+                        $_SESSION['name'] = $row['name'];
                         $_SESSION['username'] = $row['username'];
-                        $_SESSION['user_type'] = $row['u'];
+                        $_SESSION['user_type'] = $row['user_type'];
                     }                    
                 }
 
