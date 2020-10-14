@@ -38,6 +38,12 @@
                 }else if($_SESSION['user_type']==='User'){
                     include "display.php";
                 }
+
+                if(isset($_POST['logout'])){
+                    session_destroy();
+
+                    header("Location: login.php");
+                }
             ?>
         </div>
     </body>
