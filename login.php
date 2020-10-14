@@ -19,8 +19,8 @@
                 </div>
             </div>
             <?php
-                 $conn = new mysqli('localhost', 'root', '', 'event_booking');
-
+                $conn = new mysqli('localhost', 'root', '', 'event_booking');
+                session_start();
                 if(isset($_POST['login'])){
                      $username = $_POST['username'];
                      $password = $_POST['password'];
@@ -29,13 +29,13 @@
                     if($row = $result->fetch_assoc()){
                         $_SESSION['name'] = $row['name'];
                         $_SESSION['username'] = $row['username'];
-                        $_SESSION['user_type'] = $row['user_type'];
+                        $_SESSION['usertype'] = $row['user_type'];
                     }                    
                 }
 
-                if($_SESSION['user_type']==='Admin'){
+                if($_SESSION['usertype']==='Admin'){
                     include "display.php";
-                }else if($_SESSION['user_type']==='User'){
+                }else if($_SESSION['usertype']==='User'){
                     include "display.php";
                 }
 

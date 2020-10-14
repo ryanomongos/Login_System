@@ -8,24 +8,16 @@
     <body>    
     <div class="container">
             <h3><?php $_SESSION['name']?></h3>
-            <button name="logout">logout</button>
+            <button name="logout">logout</button><br />
+            <button name="event">Create Event</button></a>
+            <button name="user_form">Create User</button></a>
             <?php
-                if($_SESSION['user_type']=='admin'){
-            ?>
-                <button name="event">Create Event</button></a>
-                <button name="user_form">Create User</button></a>
-            <?php
-                }
                 if(isset($_POST['event'])){
                     include "event_form.php";
                 }else if(isset($_POST['user_form'])){
                     include "user_form.php";
                 }
 
-                echo"<a href=\"display.php\"><button>Display Events</button></a>";
-                if($_SESSION['user_type']=='user'){
-                    echo"<button>Booked Events</button>";
-                }
             ?>
             
         </div>    
