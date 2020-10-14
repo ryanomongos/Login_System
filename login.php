@@ -14,21 +14,29 @@
                         <input type="text" name="username" required><br />
                         <h5>Password</h5>
                         <input type="text" name="password" required><br /><br />
-                        <button name="submit">Submit</button><br /><br />
+                        <button name="login">Submit</button><br /><br />
                     </form>
                 </div>
             </div>
             <?php
                  $conn = new mysqli('localhost', 'root', '', 'event_booking');
 
-                 if(isset($_POST['submit'])){
+                if(isset($_POST['login'])){
                      $username = $_POST['username'];
                      $password = $_POST['password'];
 
-                     $result = $conn->prepare("INSERT INTO users_detail VALUES ('', ?, ?, ?, ?, ?)");
-                     $result->bind_param('sssss', $username, $password, $name, $email, $user_type);
-                     $result->execute();
-                 }
+                    $result = $conn->query("SELECT * FROM users_detail WHERE username = '$username' AND password = '$passwordd'");
+                    if($row = $result->fetch_assoc()){
+                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['user_type'] = $row['u'];
+                    }                    
+                }
+
+                if($_SESSION['user_type']==='Admin'){
+                    include "display.php";
+                }else if($_SESSION['user_type']==='User'){
+                    include "display.php";
+                }
             ?>
         </div>
     </body>

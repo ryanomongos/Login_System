@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Event Booking</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
@@ -18,10 +18,22 @@
                 <div class="card-body">
                     <img src="<?php $row['event_image']?>">
                     <h5><?php $row['event_name']?></h5>
-                    <button></button>
-                </div>
-            </div>
+                
             <?php
+                if($person['user_type']=='admin'){
+            ?>
+                <button>Update</button>
+                <button name="delete">Delete</button>
+            <?php
+                    if(isset($_POST['delete'])){
+                        $del = $conn->query("DELETE FROM events WHERE event_id = $row['event_id']");
+                    }    
+                }else if($person['user_type']=='user'){
+                    echo"<button>Book</button>";
+                }
+                echo"                    
+                    </div>
+                </div>";
                 }
             ?>        
     </body>
