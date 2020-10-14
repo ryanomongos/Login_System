@@ -7,21 +7,7 @@
     </head>
     <body>        
         <div class="container">
-            <?php
-                $conn = new mysqli('localhost', 'root', '', 'exercise_database');
-
-                $result = $conn->query("SELECT * FROM user_table");
-
-                while($row = $result->fetch_assoc()){
-            ?>
-                <div class="card">
-                    <br />Name: <?php echo $row['name']?><br />
-                    Course: <?php echo $row['username']?><br />
-                    Email: <?php echo $row['password']?><br />
-                </div>
-            <?php
-                }
-            ?>
+            
             <h2>Customer Data</h2>
             <table>
                 <tr>

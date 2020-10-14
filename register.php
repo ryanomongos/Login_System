@@ -9,35 +9,38 @@
         <div class="container">
             <div class="card">
                 <div class="card-body">
+                    <a href="event_form.php""><button>Create Event</button></a>
+                    <a href="#"><button>Create User</button></a>
                     <form action="register.php", method="POST">
                         <h5>Name</h5>
                         <input type="text" name="name" required><br />
+                        <h5>Email</h5>
+                        <input type="email" name="email" required><br />
                         <h5>Username</h5>
                         <input type="text" name="username" required><br />
                         <h5>Password</h5>
                         <input type="password" name="password" required><br /><br />
                         <h5>Role</h5>
-                        <input type="radio" name="role" value="admin"> Admin <br />
-                        <input type="radio" name="role" value="client"> Client <br /><br />
+                        <input type="radio" name="user_type" value="admin"> Admin <br />
+                        <input type="radio" name="user_type" value="user"> User <br /><br />
                         <button name="submit">Submit</button><br /><br />
                     </form>
+                    <a href="display.php"><button>Display Events</button></a>
                     <?php
-                        $conn = new mysqli('localhost', 'root', '', 'activity1');
+                        $conn = new mysqli('localhost', 'root', '', 'event_booking');
 
                         if(isset($_POST['submit'])){
                             $name = $_POST['name'];
+                            $email = $_POST['email'];
                             $username = $_POST['username'];
                             $password = $_POST['password'];
-                            $user_type = $_POST['role'];
-                            $created_at = time();
+                            $user_type = $_POST['user_type'];
 
-                            $result = $conn->prepare("INSERT INTO user_accounts VALUES ('', ?, ?, ?, ?, $created_at)");
-                            $result->bind_param('ssss', $name, $username, $password, $user_type);
+                            $result = $conn->prepare("INSERT INTO users_detail VALUES ('', ?, ?, ?, ?, ?)");
+                            $result->bind_param('sssss', $username, $password, $name, $email, $user_type);
                             $result->execute();
                         }
                     ?>
-                <h7>If you account already</h7><br />
-                <a href="login.php"><button>Login</button></a>
                 </div>
               </div>
         </div>

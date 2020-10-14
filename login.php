@@ -13,13 +13,23 @@
                         <h5>Username</h5>
                         <input type="text" name="username" required><br />
                         <h5>Password</h5>
-                        <input type="text" name="username" required><br /><br />
+                        <input type="text" name="password" required><br /><br />
                         <button name="submit">Submit</button><br /><br />
                     </form>
-                <h7>If you haven't registered</h7><br />
-                <a href="register.php"><button>Register</button></a>
                 </div>
-              </div>
+            </div>
+            <?php
+                 $conn = new mysqli('localhost', 'root', '', 'event_booking');
+
+                 if(isset($_POST['submit'])){
+                     $username = $_POST['username'];
+                     $password = $_POST['password'];
+
+                     $result = $conn->prepare("INSERT INTO users_detail VALUES ('', ?, ?, ?, ?, ?)");
+                     $result->bind_param('sssss', $username, $password, $name, $email, $user_type);
+                     $result->execute();
+                 }
+            ?>
         </div>
     </body>
 </html>
